@@ -33,8 +33,8 @@ const domainAccent: Record<string, { bg: string; border: string; color: string; 
 
 const statusStyle: Record<string, { color: string; bg: string; border: string }> = {
     "In Progress": { color: "#6366f1", bg: "rgba(99,102,241,0.08)", border: "rgba(99,102,241,0.2)" },
-    Exploring: { color: "#7c3aed", bg: "rgba(124,58,237,0.08)", border: "rgba(124,58,237,0.2)" },
-    Planned: { color: "#9ca3af", bg: "rgba(156,163,175,0.08)", border: "rgba(156,163,175,0.2)" },
+    Learning: { color: "#7c3aed", bg: "rgba(124,58,237,0.08)", border: "rgba(124,58,237,0.2)" },
+    "Queued Up": { color: "#9ca3af", bg: "rgba(156,163,175,0.08)", border: "rgba(156,163,175,0.2)" },
 };
 
 function SkillGrowthChart() {
