@@ -12,6 +12,7 @@ import {
     PointElement,
     Tooltip,
 } from "chart.js";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 Chart.register(LineController, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Filler);
@@ -125,16 +126,19 @@ export default function Home() {
                                             width: 100,
                                             height: 120,
                                             borderRadius: 18,
-                                            background: "linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%)",
                                             border: "2px solid rgba(255,255,255,0.9)",
                                             boxShadow: "0 8px 24px rgba(99,102,241,0.15)",
-                                            display: "flex",
-                                            alignItems: "center",
-                                            justifyContent: "center",
-                                            fontSize: 36,
+                                            overflow: "hidden",
+                                            position: "relative",
                                         }}
                                     >
-                                        👤
+                                        <Image
+                                            src="/images/profile.jpg"
+                                            alt="Khanifan"
+                                            fill
+                                            style={{ objectFit: "cover" }}
+                                            priority
+                                        />
                                     </div>
                                 </div>
 
