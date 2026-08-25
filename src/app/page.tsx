@@ -205,8 +205,9 @@ export default function Home() {
                                             maxWidth: 440,
                                         }}
                                     >
-                                        Building intelligent systems — from machine learning models and computer vision
-                                        pipelines to production-ready AI applications.
+                                        Focused on machine learning and AI, turning messy data into systems people
+                                        actually use, with a growing interest in how these systems hold up outside the
+                                        notebook.
                                     </p>
                                     <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                                         {["AI Engineering", "Machine Learning", "Computer Vision"].map(tag => (
