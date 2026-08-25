@@ -77,9 +77,36 @@ export const projects: Project[] = [
 export const featuredProjects = projects.filter(p => p.featured);
 
 export const skillGroups: SkillGroup[] = [
-    { category: "AI & ML", skills: ["Python", "Scikit-learn", "YOLOv8", "OpenCV", "PyTorch"] },
-    { category: "Data", skills: ["Pandas", "NumPy", "SQL", "PostgreSQL", "EDA"] },
-    { category: "Engineering", skills: ["Django", "REST API", "Docker", "ETL", "Next.js"] },
+    {
+        category: "AI & ML",
+        skills: [
+            { name: "Python", level: "Comfortable with" },
+            { name: "Scikit-learn", level: "Comfortable with" },
+            { name: "PyTorch", level: "Working knowledge" },
+            { name: "YOLOv8", level: "Working knowledge" },
+            { name: "OpenCV", level: "Working knowledge" },
+        ],
+    },
+    {
+        category: "Data",
+        skills: [
+            { name: "Pandas", level: "Comfortable with" },
+            { name: "NumPy", level: "Comfortable with" },
+            { name: "SQL", level: "Comfortable with" },
+            { name: "PostgreSQL", level: "Comfortable with" },
+            { name: "EDA", level: "Comfortable with" },
+        ],
+    },
+    {
+        category: "Engineering",
+        skills: [
+            { name: "Django", level: "Comfortable with" },
+            { name: "REST API", level: "Comfortable with" },
+            { name: "Docker", level: "Comfortable with" },
+            { name: "ETL", level: "Working knowledge" },
+            { name: "Next.js", level: "Learning" },
+        ],
+    },
 ];
 
 export const certifications: Certification[] = [
