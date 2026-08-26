@@ -65,6 +65,7 @@ const timeline = [
     {
         year: "Oct 2025",
         title: "Ship Operation Systems, PT Salam Pacific Indonesia Lines",
+        image: "/images/journey/2025-10.png",
         before: "I assumed most of my work going forward would look like modeling: training something, evaluating it, moving on.",
         after: "This project was almost entirely data engineering, not modeling. I took raw ship operation data stored in Excel files with multi-row, multi-header layouts, and transformed them into clean, analysis-ready CSV datasets. That meant standardizing column structures, cleaning inconsistent categorical fields, and resolving conflicting date formats across sheets that had clearly been maintained by different people over time. It wasn't exciting work, but it recalibrated how much I respect data preparation. No model is better than the data feeding it.",
     },
