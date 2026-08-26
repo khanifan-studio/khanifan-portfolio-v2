@@ -30,12 +30,14 @@ const timeline = [
     {
         year: "2023",
         title: "Started Information Systems at President University",
+        image: "/images/journey/2023.jpg",
         before: "Before university, I didn't have a clear direction, just a general interest in computers and problem-solving.",
         after: "Enrolling in Information Systems gave that interest a shape. I started learning how software and data actually work together: databases, basic programming, systems analysis. It didn't take long before I wanted to build things beyond what was being taught in class, so I started picking up side material on my own, mostly Python and the math behind machine learning, without really knowing yet where it would lead.",
     },
     {
         year: "2024",
         title: "Completed 15 certifications in AWS & Dicoding",
+        image: "/images/journey/2024.png",
         before: "Coming out of the first year, I could follow along in class but hadn't built anything real on my own.",
         after: "I spent the year deliberately building a foundation before jumping into real projects. On Dicoding, that meant working through Python fundamentals (OOP, unit testing, common libraries) and core SQL. On AWS, it meant going through the machine learning learning plan end to end: framing a problem, understanding the ML process, and getting hands-on with services like Redshift, Glue, Athena, EMR, and OpenSearch for handling data at scale. None of it was glamorous. It was closer to studying the plumbing before trying to build a house, but it meant that when real projects came, I wasn't learning the basics and the problem at the same time.",
     },
@@ -171,7 +173,7 @@ function JourneyModal({ item, onClose }: { item: (typeof timeline)[0]; onClose: 
                         width: "100%",
                         aspectRatio: "16/9",
                         borderRadius: 14,
-                        background: "linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%)",
+                        background: item.image ? "#e5e7eb" : "linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%)",
                         border: "1px solid rgba(255,255,255,0.9)",
                         display: "flex",
                         alignItems: "center",
@@ -181,9 +183,13 @@ function JourneyModal({ item, onClose }: { item: (typeof timeline)[0]; onClose: 
                         position: "relative",
                     }}
                 >
-                    <span style={{ fontSize: 13, color: "#6366f1", fontWeight: 500, opacity: 0.6 }}>
-                        📷 Photo coming soon
-                    </span>
+                    {item.image ? (
+                        <Image src={item.image} alt={item.title} fill style={{ objectFit: "cover" }} />
+                    ) : (
+                        <span style={{ fontSize: 13, color: "#6366f1", fontWeight: 500, opacity: 0.6 }}>
+                            📷 Photo coming soon
+                        </span>
+                    )}
                 </div>
                 <div
                     style={{
