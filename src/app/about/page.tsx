@@ -4,6 +4,7 @@ import FadeIn from "@/components/ui/FadeIn";
 import { skillGroups } from "@/data";
 import { Github, Linkedin, Mail, Youtube } from "lucide-react";
 import Image from "next/image";
+import { useState } from "react";
 
 const glass = {
     background: "rgba(255,255,255,0.65)",
@@ -28,50 +29,214 @@ const levelStyle: Record<string, { color: string; dot: string }> = {
 const timeline = [
     {
         year: "2023",
-        event: "Started Information Systems at President University",
-        detail: "Began studying Information Systems, with an early pull toward how data and software could actually change how decisions get made, not just how they get recorded.",
+        title: "Started Information Systems at President University",
+        before: "Before university, I didn't have a clear direction, just a general interest in computers and problem-solving.",
+        after: "Enrolling in Information Systems gave that interest a shape. I started learning how software and data actually work together: databases, basic programming, systems analysis. It didn't take long before I wanted to build things beyond what was being taught in class, so I started picking up side material on my own, mostly Python and the math behind machine learning, without really knowing yet where it would lead.",
     },
     {
         year: "2024",
-        event: "Completed 15 certifications in AWS & Dicoding",
-        detail: "Spent the year building a foundation before jumping into real projects, covering Python programming, SQL, data science basics, and AWS services like Redshift, Glue, Athena, and OpenSearch. Less about collecting badges, more about making sure the fundamentals were solid.",
+        title: "Completed 15 certifications in AWS & Dicoding",
+        before: "Coming out of the first year, I could follow along in class but hadn't built anything real on my own.",
+        after: "I spent the year deliberately building a foundation before jumping into real projects. On Dicoding, that meant working through Python fundamentals (OOP, unit testing, common libraries) and core SQL. On AWS, it meant going through the machine learning learning plan end to end: framing a problem, understanding the ML process, and getting hands-on with services like Redshift, Glue, Athena, EMR, and OpenSearch for handling data at scale. None of it was glamorous. It was closer to studying the plumbing before trying to build a house, but it meant that when real projects came, I wasn't learning the basics and the problem at the same time.",
     },
     {
         year: "May 2025",
-        event: "Student Performance Classification — first ML project",
-        detail: "Built a machine learning model to predict students' academic performance and recommend tailored learning paths, using One-Hot Encoding and MinMax Scaling for preprocessing. Reached 90% accuracy — the project that proved this could go beyond coursework.",
+        title: "Student Performance Classification — first ML project",
+        before: "I had the fundamentals, but no proof I could apply them to an actual problem end to end.",
+        after: "This was my first machine learning project, built to predict student academic performance and recommend tailored learning paths. I handled the full pipeline myself: cleaning the dataset, encoding categorical features with One-Hot Encoding, scaling numeric features with MinMax Scaling, and training a classification model in Scikit-learn. It reached 90% accuracy, but the number mattered less than the process. It was the first time I went from a raw dataset to a working model without a course structure telling me what step came next.",
     },
     {
         year: "Jun 2025",
-        event: "Marketing Dashboard & Funnel Prediction, President University",
-        detail: "Designed an interactive analytics dashboard paired with a predictive funnel model for the university's marketing division, complete with role-based authentication for secure access. First time building something meant to be used by a team, not just graded.",
+        title: "Marketing Dashboard & Funnel Prediction, President University",
+        before: "Up to this point, everything I'd built was for grading: evaluated once and then forgotten.",
+        after: "I designed an interactive analytics dashboard paired with a predictive funnel model for the university's marketing division, built on Django with a REST API backend. I also added role-based authentication so different staff members only saw the data relevant to them. This was the first project meant to actually be used by a team on an ongoing basis, which changed how carefully I thought about things like edge cases, access control, and what happens when the data isn't clean.",
     },
     {
         year: "Sep 2025",
-        event: "Early Warning Medical Project, PT Salam Pacific Indonesia Lines",
-        detail: "Built a system to monitor regions with high frequency of disease cases. Exploratory data analysis showed most cases were respiratory-related, which shaped a data mining process to identify contributing factors, integrated with external APIs pulling real-time updates every 15 minutes.",
+        title: "Early Warning Medical Project, PT Salam Pacific Indonesia Lines",
+        before: "I wanted experience outside campus, working with data that had real consequences attached to it.",
+        after: "I built a system to monitor regions with a high frequency of disease cases. Exploratory data analysis showed that most identified cases were respiratory-related, which shaped a data mining process to trace the contributing factors behind that pattern. I integrated the project with an external API to pull real-time updates every 15 minutes, so the monitoring wasn't based on a static snapshot but something that stayed current. It was my first time working with data where the stakes felt higher than a grade.",
     },
     {
         year: "Oct 2025",
-        event: "Ship Operation Systems, PT Salam Pacific Indonesia Lines",
-        detail: "Took on the less glamorous but necessary work of transforming raw, multi-header Excel ship operation data into clean, analysis-ready datasets, standardizing columns and fixing inconsistent date formats. Learned that a good model means nothing without clean data behind it.",
+        title: "Ship Operation Systems, PT Salam Pacific Indonesia Lines",
+        before: "I assumed most of my work going forward would look like modeling: training something, evaluating it, moving on.",
+        after: "This project was almost entirely data engineering, not modeling. I took raw ship operation data stored in Excel files with multi-row, multi-header layouts, and transformed them into clean, analysis-ready CSV datasets. That meant standardizing column structures, cleaning inconsistent categorical fields, and resolving conflicting date formats across sheets that had clearly been maintained by different people over time. It wasn't exciting work, but it recalibrated how much I respect data preparation. No model is better than the data feeding it.",
     },
     {
         year: "Jan 2026",
-        event: "Capstone with Dishub Central Aceh — computer vision",
-        detail: "Led a capstone project with the Department of Transportation of Central Aceh, building a real-time traffic analysis prototype for the Takengon and Lake Laut Tawar tourist areas. Implemented a YOLOv8 detection pipeline with OpenCV for vehicle counting and density estimation, backed by PostgreSQL dashboards used for actual policy discussions.",
+        title: "Capstone with Dishub Central Aceh — computer vision",
+        before: "Everything before this had been either academic or internal to one company. I hadn't worked directly with government stakeholders.",
+        after: "The capstone with the Department of Transportation of Central Aceh changed that. I led the development of a real-time traffic analysis prototype for the Takengon and Lake Laut Tawar tourist areas, implementing a YOLOv8 object detection model integrated into an OpenCV video pipeline for vehicle counting and traffic density estimation. The output fed into PostgreSQL-backed dashboards that were actually used in policy discussions about traffic management in those areas, not just presented once and shelved. It was the first project where the audience wasn't a professor or a manager, but people making decisions that affect a whole region.",
     },
     {
         year: "2026",
-        event: "Graduated with a final GPA of 3.49",
-        detail: "Finished the degree with grades that reflect four years of actually building things, not just studying them. Now putting full focus into the software house and going deeper into AI engineering as a career, not just a student project.",
+        title: "Graduated with a final GPA of 3.49",
+        before: "Through most of this, I was still a student first and an engineer second.",
+        after: "I finished my degree with a final GPA of 3.49, but the bigger shift was in priorities, not the number itself. Every project on this timeline happened alongside coursework, not instead of it, which meant a lot of late nights balancing both. Now that the degree is done, I'm putting full focus into the software house and treating AI engineering as an actual career to build, not a student project with a deadline attached to it.",
     },
 ];
 
-function TimelineItem({ item, index }: { item: (typeof timeline)[0]; index: number }) {
+function JourneyModal({ item, onClose }: { item: (typeof timeline)[0]; onClose: () => void }) {
+    return (
+        <div
+            onClick={onClose}
+            style={{
+                position: "fixed",
+                inset: 0,
+                zIndex: 100,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: 24,
+                background: "rgba(30,27,75,0.15)",
+                backdropFilter: "blur(12px)",
+            }}
+        >
+            <div
+                onClick={e => e.stopPropagation()}
+                style={{
+                    ...glass,
+                    borderRadius: 24,
+                    padding: "2rem",
+                    maxWidth: 520,
+                    width: "100%",
+                    maxHeight: "85vh",
+                    overflowY: "auto",
+                    animation: "modalIn 0.3s cubic-bezier(0.34,1.56,0.64,1)",
+                }}
+            >
+                <div
+                    style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "flex-start",
+                        marginBottom: 20,
+                    }}
+                >
+                    <div style={{ flex: 1, paddingRight: 16 }}>
+                        <span
+                            style={{
+                                display: "inline-flex",
+                                alignItems: "center",
+                                gap: 5,
+                                fontSize: 10,
+                                fontWeight: 500,
+                                color: "#6366f1",
+                                border: "1px solid rgba(99,102,241,0.2)",
+                                background: "rgba(99,102,241,0.06)",
+                                borderRadius: 999,
+                                padding: "2px 10px",
+                                marginBottom: 8,
+                            }}
+                        >
+                            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#6366f1" }} />
+                            {item.year}
+                        </span>
+                        <h2
+                            style={{
+                                fontSize: 16,
+                                fontWeight: 700,
+                                color: "#1e1b4b",
+                                margin: 0,
+                                lineHeight: 1.3,
+                                letterSpacing: "-0.01em",
+                            }}
+                        >
+                            {item.title}
+                        </h2>
+                    </div>
+                    <button
+                        onClick={onClose}
+                        style={{
+                            width: 32,
+                            height: 32,
+                            borderRadius: 8,
+                            border: "1px solid #e5e7eb",
+                            background: "rgba(255,255,255,0.8)",
+                            color: "#6b7280",
+                            fontSize: 14,
+                            cursor: "pointer",
+                            flexShrink: 0,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                        }}
+                    >
+                        ✕
+                    </button>
+                </div>
+                <div
+                    style={{
+                        width: "100%",
+                        aspectRatio: "16/9",
+                        borderRadius: 14,
+                        background: "linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%)",
+                        border: "1px solid rgba(255,255,255,0.9)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        marginBottom: 16,
+                        overflow: "hidden",
+                        position: "relative",
+                    }}
+                >
+                    <span style={{ fontSize: 13, color: "#6366f1", fontWeight: 500, opacity: 0.6 }}>
+                        📷 Photo coming soon
+                    </span>
+                </div>
+                <div
+                    style={{
+                        borderRadius: 14,
+                        border: "1px solid #e5e7eb",
+                        background: "rgba(255,255,255,0.6)",
+                        padding: "14px 16px",
+                        marginBottom: 12,
+                    }}
+                >
+                    <p
+                        style={{
+                            fontSize: 10,
+                            textTransform: "uppercase",
+                            letterSpacing: "0.08em",
+                            color: "#9ca3af",
+                            marginBottom: 8,
+                        }}
+                    >
+                        Before this
+                    </p>
+                    <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.7, margin: 0 }}>{item.before}</p>
+                </div>
+                <div
+                    style={{
+                        borderRadius: 14,
+                        border: "1px solid rgba(99,102,241,0.15)",
+                        background: "rgba(99,102,241,0.04)",
+                        padding: "14px 16px",
+                    }}
+                >
+                    <p
+                        style={{
+                            fontSize: 10,
+                            textTransform: "uppercase",
+                            letterSpacing: "0.08em",
+                            color: "#6366f1",
+                            marginBottom: 8,
+                        }}
+                    >
+                        What changed
+                    </p>
+                    <p style={{ fontSize: 13, color: "#374151", lineHeight: 1.7, margin: 0 }}>{item.after}</p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function TimelineItem({ item, index, onClick }: { item: (typeof timeline)[0]; index: number; onClick: () => void }) {
     const isLast = index === timeline.length - 1;
     return (
-        <div style={{ display: "flex", gap: 16, paddingBottom: isLast ? 0 : 28 }}>
+        <div style={{ display: "flex", gap: 16, paddingBottom: isLast ? 0 : 8 }}>
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0, width: 18 }}>
                 <div
                     style={{
@@ -80,7 +245,7 @@ function TimelineItem({ item, index }: { item: (typeof timeline)[0]; index: numb
                         borderRadius: "50%",
                         background: "#6366f1",
                         border: "2px solid rgba(99,102,241,0.2)",
-                        marginTop: 4,
+                        marginTop: 18,
                     }}
                 />
                 {!isLast && (
@@ -94,7 +259,32 @@ function TimelineItem({ item, index }: { item: (typeof timeline)[0]; index: numb
                     />
                 )}
             </div>
-            <div style={{ flex: 1, borderRadius: 12, padding: "2px 0 0" }}>
+            <button
+                onClick={onClick}
+                style={{
+                    flex: 1,
+                    textAlign: "left",
+                    cursor: "pointer",
+                    borderRadius: 14,
+                    padding: "14px 16px",
+                    marginBottom: 10,
+                    background: "rgba(255,255,255,0.5)",
+                    border: "1px solid rgba(255,255,255,0.9)",
+                    transition: "all 0.2s cubic-bezier(0.34,1.56,0.64,1)",
+                }}
+                onMouseEnter={e => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.transform = "translateY(-2px)";
+                    el.style.boxShadow = "0 8px 20px rgba(99,102,241,0.12)";
+                    el.style.borderColor = "rgba(99,102,241,0.2)";
+                }}
+                onMouseLeave={e => {
+                    const el = e.currentTarget as HTMLElement;
+                    el.style.transform = "none";
+                    el.style.boxShadow = "none";
+                    el.style.borderColor = "rgba(255,255,255,0.9)";
+                }}
+            >
                 <p
                     style={{
                         fontSize: 10,
@@ -107,16 +297,17 @@ function TimelineItem({ item, index }: { item: (typeof timeline)[0]; index: numb
                 >
                     {item.year}
                 </p>
-                <p style={{ fontSize: 14, fontWeight: 600, color: "#1e1b4b", margin: "0 0 6px", lineHeight: 1.4 }}>
-                    {item.event}
+                <p style={{ fontSize: 14, fontWeight: 600, color: "#1e1b4b", margin: 0, lineHeight: 1.4 }}>
+                    {item.title}
                 </p>
-                <p style={{ fontSize: 13, color: "#6b7280", margin: 0, lineHeight: 1.7 }}>{item.detail}</p>
-            </div>
+                <p style={{ fontSize: 11, color: "#9ca3af", margin: "6px 0 0" }}>Click to read the full story ↗</p>
+            </button>
         </div>
     );
 }
 
 export default function AboutPage() {
+    const [selected, setSelected] = useState<(typeof timeline)[0] | null>(null);
     return (
         <div style={{ position: "relative", minHeight: "100vh" }}>
             <Navbar />
@@ -335,7 +526,7 @@ export default function AboutPage() {
                         </p>
                         <div>
                             {timeline.map((item, i) => (
-                                <TimelineItem key={i} item={item} index={i} />
+                                <TimelineItem key={i} item={item} index={i} onClick={() => setSelected(item)} />
                             ))}
                         </div>
                     </div>
@@ -453,6 +644,15 @@ export default function AboutPage() {
                     </div>
                 </FadeIn>
             </main>
+
+            <style>{`
+        @keyframes modalIn {
+          from { opacity: 0; transform: scale(0.94) translateY(10px); }
+          to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+      `}</style>
+
+            {selected && <JourneyModal item={selected} onClose={() => setSelected(null)} />}
         </div>
     );
 }
