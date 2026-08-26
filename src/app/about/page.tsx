@@ -131,70 +131,76 @@ export default function AboutPage() {
             >
                 <FadeIn delay={0}>
                     <div style={{ ...glass, borderRadius: 24, padding: "2rem", marginBottom: "1rem" }}>
-                        <div style={{ display: "flex", alignItems: "center", gap: 20, marginBottom: 24 }}>
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                textAlign: "center",
+                                marginBottom: 24,
+                            }}
+                        >
                             <div
                                 style={{
-                                    width: 112,
-                                    height: 112,
-                                    borderRadius: 20,
-                                    border: "2px solid rgba(255,255,255,0.9)",
-                                    boxShadow: "0 6px 20px rgba(99,102,241,0.12)",
+                                    width: 160,
+                                    height: 160,
+                                    borderRadius: "50%",
+                                    border: "3px solid rgba(255,255,255,0.9)",
+                                    boxShadow: "0 8px 28px rgba(99,102,241,0.15)",
                                     flexShrink: 0,
                                     overflow: "hidden",
                                     position: "relative",
+                                    marginBottom: 16,
                                 }}
                             >
                                 <Image src="/images/profile.jpg" alt="Khanifan" fill style={{ objectFit: "cover" }} />
                             </div>
-                            <div>
-                                <p
-                                    style={{
-                                        fontSize: 10,
-                                        textTransform: "uppercase",
-                                        letterSpacing: "0.08em",
-                                        color: "#9ca3af",
-                                        marginBottom: 8,
-                                    }}
-                                >
-                                    About Me
-                                </p>
-                                <h1
-                                    style={{
-                                        fontSize: "clamp(1.75rem,4vw,2.5rem)",
-                                        fontWeight: 700,
-                                        color: "#1e1b4b",
-                                        margin: "0 0 4px",
-                                        letterSpacing: "-0.03em",
-                                    }}
-                                >
-                                    Khanifan
-                                </h1>
-                                <p style={{ fontSize: 13, color: "#6366f1", fontWeight: 500, margin: 0 }}>
-                                    AI Engineer · Information Systems
-                                </p>
-                            </div>
+                            <p
+                                style={{
+                                    fontSize: 10,
+                                    textTransform: "uppercase",
+                                    letterSpacing: "0.08em",
+                                    color: "#9ca3af",
+                                    marginBottom: 8,
+                                }}
+                            >
+                                About Me
+                            </p>
+                            <h1
+                                style={{
+                                    fontSize: "clamp(1.75rem,4vw,2.5rem)",
+                                    fontWeight: 700,
+                                    color: "#1e1b4b",
+                                    margin: "0 0 4px",
+                                    letterSpacing: "-0.03em",
+                                }}
+                            >
+                                Khanifan
+                            </h1>
+                            <p style={{ fontSize: 13, color: "#6366f1", fontWeight: 500, margin: 0 }}>
+                                AI Engineer · Information Systems
+                            </p>
                         </div>
                         <div style={{ fontSize: 13, lineHeight: 1.8, color: "#6b7280" }}>
                             <p style={{ margin: "0 0 12px" }}>
-                                I got into AI because I kept seeing problems that felt fixable. Messy data. Processes
-                                that took way longer than they should. Systems people just... put up with, instead of
-                                fixing.
+                                I got into AI by running into problems that felt solvable: messy data, slow processes,
+                                and systems people simply worked around instead of fixing.
                             </p>
                             <p style={{ margin: "0 0 12px" }}>
-                                I recently finished my degree in Information Systems at President University with a
-                                final GPA of 3.49. At the same time, I&apos;m building a software house. The goal is
-                                pretty simple: make good technology available to people who normally can&apos;t afford
-                                it, not just big companies with enterprise budgets.
+                                I recently completed my degree in Information Systems at President University with a
+                                final GPA of 3.49. Alongside that, I&apos;m building a software house with a clear goal:
+                                making capable technology accessible to organizations that don&apos;t typically have the
+                                budget for enterprise solutions.
                             </p>
                             <p style={{ margin: "0 0 12px" }}>
-                                I care more about whether something actually works when real people use it than how it
-                                looks in a notebook or a demo. That&apos;s shown up in most of what I&apos;ve built so
-                                far, including a computer vision pipeline I built that&apos;s now running for a local
-                                government transportation office.
+                                What matters most to me is whether something actually holds up in the hands of real
+                                users, not just in a notebook or a demo. That principle has guided most of my work so
+                                far, including a computer vision pipeline I built that&apos;s currently in use by a
+                                local government transportation office.
                             </p>
                             <p style={{ margin: 0 }}>
-                                Still figuring a lot of this out. That&apos;s probably true for most people my age, I
-                                just happen to be doing it in public.
+                                I&apos;m still early in this field, and I&apos;d rather build that experience openly
+                                than wait until I feel fully ready.
                             </p>
                         </div>
                     </div>
