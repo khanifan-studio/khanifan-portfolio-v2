@@ -31,7 +31,7 @@ const timeline = [
         year: "2023",
         title: "Started Information Systems at President University",
         image: "/images/journey/2023.jpg",
-        imagePosition: "top",
+        imagePosition: "center 15%",
         before: "Before university, I didn't have a clear direction, just a general interest in computers and problem-solving.",
         after: "Enrolling in Information Systems gave that interest a shape. I started learning how software and data actually work together: databases, basic programming, systems analysis. It didn't take long before I wanted to build things beyond what was being taught in class, so I started picking up side material on my own, mostly Python and the math behind machine learning, without really knowing yet where it would lead.",
     },
