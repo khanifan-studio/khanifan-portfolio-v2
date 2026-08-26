@@ -31,6 +31,7 @@ const timeline = [
         year: "2023",
         title: "Started Information Systems at President University",
         image: "/images/journey/2023.jpg",
+        imagePosition: "top",
         before: "Before university, I didn't have a clear direction, just a general interest in computers and problem-solving.",
         after: "Enrolling in Information Systems gave that interest a shape. I started learning how software and data actually work together: databases, basic programming, systems analysis. It didn't take long before I wanted to build things beyond what was being taught in class, so I started picking up side material on my own, mostly Python and the math behind machine learning, without really knowing yet where it would lead.",
     },
@@ -43,7 +44,8 @@ const timeline = [
     },
     {
         year: "May 2025",
-        title: "Student Performance Classification — first ML project",
+        title: "Student Performance Classification, first ML project",
+        image: "/images/journey/2025-05.png",
         before: "I had the fundamentals, but no proof I could apply them to an actual problem end to end.",
         after: "This was my first machine learning project, built to predict student academic performance and recommend tailored learning paths. I handled the full pipeline myself: cleaning the dataset, encoding categorical features with One-Hot Encoding, scaling numeric features with MinMax Scaling, and training a classification model in Scikit-learn. It reached 90% accuracy, but the number mattered less than the process. It was the first time I went from a raw dataset to a working model without a course structure telling me what step came next.",
     },
@@ -67,7 +69,7 @@ const timeline = [
     },
     {
         year: "Jan 2026",
-        title: "Capstone with Dishub Central Aceh — computer vision",
+        title: "Capstone with Dishub Central Aceh, computer vision",
         before: "Everything before this had been either academic or internal to one company. I hadn't worked directly with government stakeholders.",
         after: "The capstone with the Department of Transportation of Central Aceh changed that. I led the development of a real-time traffic analysis prototype for the Takengon and Lake Laut Tawar tourist areas, implementing a YOLOv8 object detection model integrated into an OpenCV video pipeline for vehicle counting and traffic density estimation. The output fed into PostgreSQL-backed dashboards that were actually used in policy discussions about traffic management in those areas, not just presented once and shelved. It was the first project where the audience wasn't a professor or a manager, but people making decisions that affect a whole region.",
     },
@@ -184,7 +186,12 @@ function JourneyModal({ item, onClose }: { item: (typeof timeline)[0]; onClose: 
                     }}
                 >
                     {item.image ? (
-                        <Image src={item.image} alt={item.title} fill style={{ objectFit: "cover" }} />
+                        <Image
+                            src={item.image}
+                            alt={item.title}
+                            fill
+                            style={{ objectFit: "cover", objectPosition: item.imagePosition ?? "center" }}
+                        />
                     ) : (
                         <span style={{ fontSize: 13, color: "#6366f1", fontWeight: 500, opacity: 0.6 }}>
                             📷 Photo coming soon
