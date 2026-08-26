@@ -58,6 +58,7 @@ const timeline = [
     {
         year: "Sep 2025",
         title: "Early Warning Medical Project, PT Salam Pacific Indonesia Lines",
+        image: "/images/journey/2025-09.png",
         before: "I wanted experience outside campus, working with data that had real consequences attached to it.",
         after: "I built a system to monitor regions with a high frequency of disease cases. Exploratory data analysis showed that most identified cases were respiratory-related, which shaped a data mining process to trace the contributing factors behind that pattern. I integrated the project with an external API to pull real-time updates every 15 minutes, so the monitoring wasn't based on a static snapshot but something that stayed current. It was my first time working with data where the stakes felt higher than a grade.",
     },
