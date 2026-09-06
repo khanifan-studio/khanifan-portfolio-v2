@@ -24,6 +24,7 @@ export interface Certification {
     credential_url?: string | null;
     description?: string;
     pdf_url?: string | null;
+    image?: string | null;
 }
 
 export interface Skill {
