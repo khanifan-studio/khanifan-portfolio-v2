@@ -13,7 +13,7 @@ import {
     Tooltip,
 } from "chart.js";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 Chart.register(LineController, LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Filler);
 
@@ -102,6 +102,15 @@ function SkillGrowthChart() {
 }
 
 export default function Home() {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 640);
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     return (
         <div style={{ position: "relative", minHeight: "100vh" }}>
             <Navbar />
@@ -117,19 +126,28 @@ export default function Home() {
                 {/* Hero */}
                 <section style={{ marginBottom: "5rem" }}>
                     <FadeIn delay={0}>
-                        <div style={{ ...glass, borderRadius: 24, padding: "2rem" }}>
-                            <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}>
+                        <div style={{ ...glass, borderRadius: 24, padding: isMobile ? "1.5rem" : "2rem" }}>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    flexDirection: isMobile ? "column" : "row",
+                                    gap: isMobile ? "1.25rem" : "2rem",
+                                    alignItems: isMobile ? "center" : "flex-start",
+                                    textAlign: isMobile ? "center" : "left",
+                                }}
+                            >
                                 {/* Photo */}
                                 <div style={{ flexShrink: 0 }}>
                                     <div
                                         style={{
-                                            width: 100,
-                                            height: 120,
+                                            width: isMobile ? 84 : 100,
+                                            height: isMobile ? 100 : 120,
                                             borderRadius: 18,
                                             border: "2px solid rgba(255,255,255,0.9)",
                                             boxShadow: "0 8px 24px rgba(99,102,241,0.15)",
                                             overflow: "hidden",
                                             position: "relative",
+                                            margin: isMobile ? "0 auto" : undefined,
                                         }}
                                     >
                                         <Image
@@ -143,7 +161,7 @@ export default function Home() {
                                 </div>
 
                                 {/* Info */}
-                                <div style={{ flex: 1 }}>
+                                <div style={{ flex: 1, width: "100%" }}>
                                     <div
                                         style={{
                                             marginBottom: 12,
@@ -171,7 +189,7 @@ export default function Home() {
                                     </div>
                                     <h1
                                         style={{
-                                            fontSize: "clamp(2rem,5vw,3.25rem)",
+                                            fontSize: "clamp(1.75rem,7vw,3.25rem)",
                                             fontWeight: 700,
                                             color: "#1e1b4b",
                                             lineHeight: 1.05,
@@ -183,7 +201,7 @@ export default function Home() {
                                     </h1>
                                     <p
                                         style={{
-                                            fontSize: "clamp(2rem,5vw,3.25rem)",
+                                            fontSize: "clamp(1.75rem,7vw,3.25rem)",
                                             fontWeight: 700,
                                             lineHeight: 1.05,
                                             margin: "0 0 16px",
@@ -203,13 +221,22 @@ export default function Home() {
                                             color: "#6b7280",
                                             marginBottom: 20,
                                             maxWidth: 440,
+                                            marginLeft: isMobile ? "auto" : 0,
+                                            marginRight: isMobile ? "auto" : 0,
                                         }}
                                     >
                                         Focused on machine learning and AI, turning messy data into systems people
                                         actually use, with a growing interest in how these systems hold up outside the
                                         notebook.
                                     </p>
-                                    <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            flexWrap: "wrap",
+                                            gap: 8,
+                                            justifyContent: isMobile ? "center" : "flex-start",
+                                        }}
+                                    >
                                         {["AI Engineering", "Machine Learning", "Computer Vision"].map(tag => (
                                             <span
                                                 key={tag}
@@ -229,7 +256,15 @@ export default function Home() {
                                 </div>
 
                                 {/* Stats */}
-                                <div style={{ display: "flex", flexDirection: "column", gap: 10, flexShrink: 0 }}>
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        flexDirection: isMobile ? "row" : "column",
+                                        gap: 10,
+                                        flexShrink: 0,
+                                        width: isMobile ? "100%" : undefined,
+                                    }}
+                                >
                                     {[
                                         { value: "5", label: "Projects" },
                                         { value: "3", label: "Domains" },
@@ -241,15 +276,16 @@ export default function Home() {
                                                 background: "rgba(255,255,255,0.8)",
                                                 border: "1px solid rgba(255,255,255,0.9)",
                                                 borderRadius: 14,
-                                                padding: "12px 18px",
+                                                padding: isMobile ? "10px 8px" : "12px 18px",
                                                 textAlign: "center",
-                                                minWidth: 80,
+                                                minWidth: isMobile ? 0 : 80,
+                                                flex: isMobile ? 1 : undefined,
                                                 boxShadow: "0 2px 8px rgba(99,102,241,0.06)",
                                             }}
                                         >
                                             <p
                                                 style={{
-                                                    fontSize: 20,
+                                                    fontSize: isMobile ? 16 : 20,
                                                     fontWeight: 700,
                                                     color: "#1e1b4b",
                                                     margin: 0,
@@ -284,8 +320,10 @@ export default function Home() {
                             <div
                                 style={{
                                     display: "flex",
+                                    flexDirection: isMobile ? "column" : "row",
                                     justifyContent: "space-between",
-                                    alignItems: "flex-end",
+                                    alignItems: isMobile ? "flex-start" : "flex-end",
+                                    gap: isMobile ? 4 : 0,
                                     marginBottom: 20,
                                 }}
                             >
