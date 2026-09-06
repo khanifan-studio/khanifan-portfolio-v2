@@ -116,6 +116,7 @@ export const certifications: Certification[] = [
         issuer: "AWS Training & Certification",
         year: "2025",
         description: "Foundational AWS Cloud concepts: core services, security, architecture, pricing, and support.",
+        image: "/images/certifications/1.jpg",
     },
     {
         id: 2,
@@ -123,6 +124,7 @@ export const certifications: Certification[] = [
         issuer: "AWS Training & Certification",
         year: "2025",
         description: "Structured AWS learning path covering the building blocks of machine learning.",
+        image: "/images/certifications/2.jpg",
     },
     {
         id: 3,
@@ -130,6 +132,7 @@ export const certifications: Certification[] = [
         issuer: "AWS Training & Certification",
         year: "2025",
         description: "Core ML vocabulary and the end-to-end ML process from framing to deployment.",
+        image: "/images/certifications/3.jpg",
     },
     {
         id: 4,
@@ -137,6 +140,7 @@ export const certifications: Certification[] = [
         issuer: "AWS Training & Certification",
         year: "2025",
         description: "How to scope an ML project: defining success criteria and data requirements.",
+        image: "/images/certifications/4.jpg",
     },
     {
         id: 5,
@@ -144,6 +148,7 @@ export const certifications: Certification[] = [
         issuer: "AWS Training & Certification",
         year: "2025",
         description: "Building intuition for where ML fits in solving real problems.",
+        image: "/images/certifications/5.jpg",
     },
     {
         id: 6,
@@ -151,6 +156,7 @@ export const certifications: Certification[] = [
         issuer: "AWS Training & Certification",
         year: "2025",
         description: "ML fundamentals framed for decision-making and business impact.",
+        image: "/images/certifications/6.jpg",
     },
     {
         id: 7,
@@ -158,6 +164,7 @@ export const certifications: Certification[] = [
         issuer: "AWS Training & Certification",
         year: "2025",
         description: "Introduction to Amazon Redshift for running analytics at scale.",
+        image: "/images/certifications/7.jpg",
     },
     {
         id: 8,
@@ -165,6 +172,7 @@ export const certifications: Certification[] = [
         issuer: "AWS Training & Certification",
         year: "2025",
         description: "Running big data frameworks (Spark, Hadoop) at scale on AWS.",
+        image: "/images/certifications/8.jpg",
     },
     {
         id: 9,
@@ -172,6 +180,7 @@ export const certifications: Certification[] = [
         issuer: "AWS Training & Certification",
         year: "2025",
         description: "Serverless ETL service for discovering, preparing, and combining data.",
+        image: "/images/certifications/9.jpg",
     },
     {
         id: 10,
@@ -179,6 +188,7 @@ export const certifications: Certification[] = [
         issuer: "AWS Training & Certification",
         year: "2025",
         description: "Running SQL queries directly against data stored in S3.",
+        image: "/images/certifications/10.jpg",
     },
     {
         id: 11,
@@ -186,6 +196,7 @@ export const certifications: Certification[] = [
         issuer: "AWS Training & Certification",
         year: "2025",
         description: "Search, log analytics, and real-time application monitoring.",
+        image: "/images/certifications/11.jpg",
     },
     {
         id: 12,
@@ -193,6 +204,7 @@ export const certifications: Certification[] = [
         issuer: "AWS Training & Certification",
         year: "2025",
         description: "Building analytics pipelines using AWS serverless services.",
+        image: "/images/certifications/12.jpg",
     },
     {
         id: 13,
@@ -201,6 +213,7 @@ export const certifications: Certification[] = [
         year: "2024",
         credential_url: "https://www.dicoding.com/certificates/GRX54RR3YP0M",
         description: "Python fundamentals: OOP, unit testing, and popular data science libraries. 35 hours.",
+        image: "/images/certifications/13.jpg",
     },
     {
         id: 14,
@@ -209,6 +222,7 @@ export const certifications: Certification[] = [
         year: "2024",
         credential_url: "https://www.dicoding.com/certificates/N9ZOY1R2DPG5",
         description: "Core SQL for data analysis: DDL, DML, and constraints.",
+        image: "/images/certifications/14.jpg",
     },
     {
         id: 15,
@@ -217,6 +231,7 @@ export const certifications: Certification[] = [
         year: "2024",
         credential_url: "https://www.dicoding.com/certificates/KEXLYQ790ZG2",
         description: "Foundations of data science: analysis cycle, tools, and ML basics.",
+        image: "/images/certifications/15.jpg",
     },
 ];
 
