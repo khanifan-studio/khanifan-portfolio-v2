@@ -23,11 +23,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     style={{
                         position: "fixed",
                         borderRadius: "50%",
-                        width: 600,
-                        height: 600,
-                        background: "radial-gradient(circle, rgba(165,180,252,0.35) 0%, rgba(165,180,252,0) 70%)",
-                        top: -200,
-                        right: -150,
+                        width: "min(600px, 85vw)",
+                        height: "min(600px, 85vw)",
+                        background: "radial-gradient(circle, rgba(165,180,252,0.4) 0%, rgba(165,180,252,0) 70%)",
+                        top: "-15vw",
+                        right: "-20vw",
                         pointerEvents: "none",
                         zIndex: 0,
                     }}
@@ -36,11 +36,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     style={{
                         position: "fixed",
                         borderRadius: "50%",
-                        width: 500,
-                        height: 500,
-                        background: "radial-gradient(circle, rgba(196,181,253,0.3) 0%, rgba(196,181,253,0) 70%)",
-                        bottom: -150,
-                        left: -100,
+                        width: "min(500px, 75vw)",
+                        height: "min(500px, 75vw)",
+                        background: "radial-gradient(circle, rgba(196,181,253,0.35) 0%, rgba(196,181,253,0) 70%)",
+                        bottom: "-15vw",
+                        left: "-20vw",
                         pointerEvents: "none",
                         zIndex: 0,
                     }}
@@ -49,11 +49,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     style={{
                         position: "fixed",
                         borderRadius: "50%",
-                        width: 350,
-                        height: 350,
-                        background: "radial-gradient(circle, rgba(224,231,255,0.4) 0%, rgba(224,231,255,0) 70%)",
+                        width: "min(350px, 60vw)",
+                        height: "min(350px, 60vw)",
+                        background: "radial-gradient(circle, rgba(224,231,255,0.5) 0%, rgba(224,231,255,0) 70%)",
                         top: "40%",
                         left: "30%",
+                        pointerEvents: "none",
+                        zIndex: 0,
+                    }}
+                />
+                <div
+                    style={{
+                        position: "fixed",
+                        borderRadius: "50%",
+                        width: "min(400px, 70vw)",
+                        height: "min(400px, 70vw)",
+                        background: "radial-gradient(circle, rgba(216,180,254,0.3) 0%, rgba(216,180,254,0) 70%)",
+                        bottom: "10%",
+                        right: "-15vw",
                         pointerEvents: "none",
                         zIndex: 0,
                     }}
