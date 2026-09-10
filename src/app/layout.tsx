@@ -37,11 +37,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     style={{
                         position: "fixed",
                         borderRadius: "50%",
-                        width: "min(600px, 85vw)",
-                        height: "min(600px, 85vw)",
+                        width: "clamp(500px, 45vw, 950px)",
+                        height: "clamp(500px, 45vw, 950px)",
                         background: "radial-gradient(circle, rgba(165,180,252,0.4) 0%, rgba(165,180,252,0) 70%)",
                         top: "-15vw",
-                        right: "-20vw",
+                        right: "-18vw",
                         pointerEvents: "none",
                         zIndex: 0,
                     }}
@@ -50,11 +50,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     style={{
                         position: "fixed",
                         borderRadius: "50%",
-                        width: "min(500px, 75vw)",
-                        height: "min(500px, 75vw)",
+                        width: "clamp(420px, 38vw, 780px)",
+                        height: "clamp(420px, 38vw, 780px)",
                         background: "radial-gradient(circle, rgba(196,181,253,0.35) 0%, rgba(196,181,253,0) 70%)",
                         bottom: "-15vw",
-                        left: "-20vw",
+                        left: "-16vw",
                         pointerEvents: "none",
                         zIndex: 0,
                     }}
@@ -63,8 +63,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     style={{
                         position: "fixed",
                         borderRadius: "50%",
-                        width: "min(350px, 60vw)",
-                        height: "min(350px, 60vw)",
+                        width: "clamp(300px, 28vw, 550px)",
+                        height: "clamp(300px, 28vw, 550px)",
                         background: "radial-gradient(circle, rgba(224,231,255,0.5) 0%, rgba(224,231,255,0) 70%)",
                         top: "40%",
                         left: "30%",
@@ -76,11 +76,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     style={{
                         position: "fixed",
                         borderRadius: "50%",
-                        width: "min(400px, 70vw)",
-                        height: "min(400px, 70vw)",
+                        width: "clamp(340px, 32vw, 620px)",
+                        height: "clamp(340px, 32vw, 620px)",
                         background: "radial-gradient(circle, rgba(216,180,254,0.3) 0%, rgba(216,180,254,0) 70%)",
-                        bottom: "10%",
-                        right: "-15vw",
+                        bottom: "8%",
+                        right: "-14vw",
+                        pointerEvents: "none",
+                        zIndex: 0,
+                    }}
+                />
+                <div
+                    style={{
+                        position: "fixed",
+                        borderRadius: "50%",
+                        width: "clamp(260px, 24vw, 480px)",
+                        height: "clamp(260px, 24vw, 480px)",
+                        background: "radial-gradient(circle, rgba(199,210,254,0.32) 0%, rgba(199,210,254,0) 70%)",
+                        top: "12%",
+                        left: "-10vw",
                         pointerEvents: "none",
                         zIndex: 0,
                     }}

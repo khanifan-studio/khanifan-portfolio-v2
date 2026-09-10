@@ -47,7 +47,7 @@ export default function Navbar() {
                     transition: "padding 0.3s ease",
                 }}
             >
-                <div style={{ maxWidth: 1024, margin: "0 auto" }}>
+                <div style={{ maxWidth: 1080, margin: "0 auto" }}>
                     <div
                         style={{
                             background: "rgba(255,255,255,0.72)",

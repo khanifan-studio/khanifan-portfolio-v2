@@ -112,9 +112,9 @@ export default function Home() {
                 style={{
                     position: "relative",
                     zIndex: 10,
-                    maxWidth: 900,
+                    maxWidth: 1080,
                     margin: "0 auto",
-                    padding: isMobile ? "6.5rem 1.25rem 4rem" : "7.5rem 2rem 5rem",
+                    padding: isMobile ? "6.5rem 1.25rem 4rem" : "7.5rem 2.5rem 5rem",
                 }}
             >
                 {/* Hero */}
