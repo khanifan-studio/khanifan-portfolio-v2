@@ -18,6 +18,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     overflowX: "hidden",
                 }}
             >
+                {/* subtle dot grid texture */}
+                <div
+                    style={{
+                        position: "fixed",
+                        inset: 0,
+                        zIndex: 0,
+                        pointerEvents: "none",
+                        backgroundImage: "radial-gradient(rgba(99,102,241,0.18) 1px, transparent 1px)",
+                        backgroundSize: "28px 28px",
+                        maskImage: "radial-gradient(ellipse 80% 70% at 50% 30%, black 40%, transparent 90%)",
+                        WebkitMaskImage: "radial-gradient(ellipse 80% 70% at 50% 30%, black 40%, transparent 90%)",
+                    }}
+                />
+
                 {/* iOS-style ambient orbs */}
                 <div
                     style={{
@@ -71,6 +85,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                         zIndex: 0,
                     }}
                 />
+
+                {/* faint neural-network motif, ties visually to AI/ML subject */}
+                <svg
+                    style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none", opacity: 0.5 }}
+                    width="100%"
+                    height="100%"
+                    preserveAspectRatio="xMidYMid slice"
+                >
+                    <defs>
+                        <pattern id="nodes" x="0" y="0" width="140" height="140" patternUnits="userSpaceOnUse">
+                            <circle cx="20" cy="30" r="2" fill="rgba(99,102,241,0.35)" />
+                            <circle cx="100" cy="15" r="2" fill="rgba(139,92,246,0.3)" />
+                            <circle cx="70" cy="90" r="2" fill="rgba(99,102,241,0.3)" />
+                            <circle cx="120" cy="110" r="2" fill="rgba(139,92,246,0.28)" />
+                            <line x1="20" y1="30" x2="100" y2="15" stroke="rgba(99,102,241,0.15)" strokeWidth="1" />
+                            <line x1="20" y1="30" x2="70" y2="90" stroke="rgba(99,102,241,0.12)" strokeWidth="1" />
+                            <line x1="70" y1="90" x2="120" y2="110" stroke="rgba(139,92,246,0.12)" strokeWidth="1" />
+                            <line x1="100" y1="15" x2="120" y2="110" stroke="rgba(99,102,241,0.08)" strokeWidth="1" />
+                        </pattern>
+                    </defs>
+                    <rect width="100%" height="100%" fill="url(#nodes)" />
+                </svg>
 
                 {/* Tawk.to chat widget */}
                 <script

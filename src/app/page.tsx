@@ -23,12 +23,12 @@ const glass = {
     backdropFilter: "blur(20px)",
     WebkitBackdropFilter: "blur(20px)",
     boxShadow: "0 4px 24px rgba(99,102,241,0.08), 0 1px 0 rgba(255,255,255,0.9) inset",
-} as const;
+};
 
-const domainAccent: Record<string, { bg: string; border: string; color: string; dot: string }> = {
-    "computer-vision": { bg: "rgba(234,88,12,0.08)", border: "rgba(234,88,12,0.2)", color: "#ea580c", dot: "#ea580c" },
-    "data-analytics": { bg: "rgba(124,58,237,0.08)", border: "rgba(124,58,237,0.2)", color: "#7c3aed", dot: "#7c3aed" },
-    "data-science": { bg: "rgba(99,102,241,0.08)", border: "rgba(99,102,241,0.2)", color: "#6366f1", dot: "#6366f1" },
+const domainColor: Record<string, { bg: string; color: string; border: string }> = {
+    "computer-vision": { bg: "rgba(99,102,241,0.1)", color: "#4f46e5", border: "rgba(99,102,241,0.2)" },
+    "data-analytics": { bg: "rgba(139,92,246,0.1)", color: "#7c3aed", border: "rgba(139,92,246,0.2)" },
+    "data-science": { bg: "rgba(59,130,246,0.1)", color: "#2563eb", border: "rgba(59,130,246,0.2)" },
 };
 
 const statusStyle: Record<string, { color: string; bg: string; border: string }> = {
@@ -52,14 +52,14 @@ function SkillGrowthChart() {
                     {
                         data: skillGrowthData.data,
                         borderColor: "#6366f1",
-                        backgroundColor: "rgba(99,102,241,0.06)",
+                        backgroundColor: "rgba(99,102,241,0.08)",
                         fill: true,
                         tension: 0.4,
                         pointBackgroundColor: "#6366f1",
-                        pointBorderColor: "white",
+                        pointBorderColor: "#fff",
                         pointBorderWidth: 2,
-                        pointRadius: 5,
-                        pointHoverRadius: 7,
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
                     },
                 ],
             },
@@ -69,11 +69,7 @@ function SkillGrowthChart() {
                 plugins: {
                     legend: { display: false },
                     tooltip: {
-                        backgroundColor: "rgba(255,255,255,0.95)",
-                        borderColor: "rgba(99,102,241,0.15)",
-                        borderWidth: 1,
-                        titleColor: "#1e1b4b",
-                        bodyColor: "#6366f1",
+                        backgroundColor: "rgba(30,27,75,0.9)",
                         padding: 10,
                         callbacks: { label: item => `  ${item.parsed.y} unique skills` },
                     },
@@ -81,14 +77,12 @@ function SkillGrowthChart() {
                 scales: {
                     x: {
                         ticks: { color: "#9ca3af", font: { size: 10 } },
-                        grid: { color: "rgba(99,102,241,0.05)" },
-                        border: { color: "rgba(99,102,241,0.08)" },
+                        grid: { color: "rgba(99,102,241,0.06)" },
                     },
                     y: {
                         beginAtZero: true,
                         ticks: { color: "#9ca3af", stepSize: 5 },
-                        grid: { color: "rgba(99,102,241,0.05)" },
-                        border: { color: "rgba(99,102,241,0.08)" },
+                        grid: { color: "rgba(99,102,241,0.06)" },
                     },
                 },
             },
@@ -118,9 +112,9 @@ export default function Home() {
                 style={{
                     position: "relative",
                     zIndex: 10,
-                    maxWidth: 1024,
+                    maxWidth: 900,
                     margin: "0 auto",
-                    padding: "7rem 1.5rem 5rem",
+                    padding: isMobile ? "6.5rem 1.25rem 4rem" : "7.5rem 2rem 5rem",
                 }}
             >
                 {/* Hero */}
@@ -316,7 +310,7 @@ export default function Home() {
                 {/* Skill Growth Chart */}
                 <section style={{ marginBottom: "5rem" }}>
                     <FadeIn delay={0.1}>
-                        <div style={{ ...glass, borderRadius: 20, padding: "1.5rem" }}>
+                        <div style={{ ...glass, borderRadius: 24, padding: isMobile ? "1.25rem" : "1.75rem" }}>
                             <div
                                 style={{
                                     display: "flex",
@@ -364,7 +358,7 @@ export default function Home() {
 
                 {/* Featured Projects */}
                 <section style={{ marginBottom: "5rem" }}>
-                    <FadeIn delay={0.05}>
+                    <FadeIn delay={0.15}>
                         <div
                             style={{
                                 display: "flex",
@@ -406,113 +400,87 @@ export default function Home() {
                         </div>
                     </FadeIn>
                     <div
-                        style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: 14 }}
+                        style={{
+                            display: "grid",
+                            gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit,minmax(260px,1fr))",
+                            gap: 16,
+                        }}
                     >
                         {featuredProjects.map((project, i) => {
-                            const accent = domainAccent[project.domain];
+                            const c = domainColor[project.domain] ?? domainColor["data-science"];
                             return (
-                                <FadeIn key={project.slug} delay={0.1 + i * 0.07}>
+                                <FadeIn key={project.slug} delay={0.2 + i * 0.05}>
                                     <a
                                         href={`/projects/${project.slug}`}
                                         style={{
                                             ...glass,
                                             borderRadius: 20,
-                                            padding: 20,
-                                            display: "flex",
-                                            flexDirection: "column",
+                                            padding: "1.25rem",
+                                            display: "block",
                                             textDecoration: "none",
-                                            transition: "all 0.25s cubic-bezier(0.34,1.56,0.64,1)",
-                                        }}
-                                        onMouseEnter={e => {
-                                            const el = e.currentTarget as HTMLElement;
-                                            el.style.transform = "translateY(-4px) scale(1.01)";
-                                            el.style.boxShadow =
-                                                "0 12px 40px rgba(99,102,241,0.14), 0 1px 0 rgba(255,255,255,0.9) inset";
-                                        }}
-                                        onMouseLeave={e => {
-                                            const el = e.currentTarget as HTMLElement;
-                                            el.style.transform = "none";
-                                            el.style.boxShadow =
-                                                "0 4px 24px rgba(99,102,241,0.08), 0 1px 0 rgba(255,255,255,0.9) inset";
+                                            height: "100%",
                                         }}
                                     >
-                                        <div style={{ marginBottom: 14 }}>
-                                            <span
-                                                style={{
-                                                    display: "inline-flex",
-                                                    alignItems: "center",
-                                                    gap: 5,
-                                                    borderRadius: 999,
-                                                    border: `1px solid ${accent.border}`,
-                                                    background: accent.bg,
-                                                    padding: "3px 10px",
-                                                    fontSize: 10,
-                                                    fontWeight: 500,
-                                                    textTransform: "uppercase",
-                                                    letterSpacing: "0.04em",
-                                                    color: accent.color,
-                                                }}
-                                            >
-                                                <span
-                                                    style={{
-                                                        width: 5,
-                                                        height: 5,
-                                                        borderRadius: "50%",
-                                                        background: accent.dot,
-                                                    }}
-                                                />
-                                                {project.domain.replace(/-/g, " ")}
-                                            </span>
-                                        </div>
+                                        <span
+                                            style={{
+                                                display: "inline-block",
+                                                fontSize: 10,
+                                                fontWeight: 600,
+                                                padding: "3px 10px",
+                                                borderRadius: 999,
+                                                background: c.bg,
+                                                color: c.color,
+                                                border: `1px solid ${c.border}`,
+                                                marginBottom: 10,
+                                                textTransform: "uppercase",
+                                                letterSpacing: "0.04em",
+                                            }}
+                                        >
+                                            {project.domain.replace(/-/g, " ")}
+                                        </span>
                                         <p
                                             style={{
-                                                fontSize: 14,
+                                                fontSize: 15,
                                                 fontWeight: 600,
                                                 color: "#1e1b4b",
-                                                marginBottom: 8,
-                                                lineHeight: 1.3,
-                                                letterSpacing: "-0.01em",
+                                                marginBottom: 6,
+                                                lineHeight: 1.35,
                                             }}
                                         >
                                             {project.title}
                                         </p>
-                                        <p style={{ fontSize: 12, color: "#6b7280", lineHeight: 1.6, flex: 1 }}>
+                                        <p
+                                            style={{
+                                                fontSize: 12.5,
+                                                color: "#6b7280",
+                                                lineHeight: 1.6,
+                                                marginBottom: 12,
+                                            }}
+                                        >
                                             {project.summary}
                                         </p>
-                                        <div style={{ marginTop: 14, display: "flex", flexWrap: "wrap", gap: 6 }}>
-                                            {project.skills.slice(0, 3).map(skill => (
+                                        <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginBottom: 10 }}>
+                                            {project.skills.slice(0, 3).map(s => (
                                                 <span
-                                                    key={skill}
+                                                    key={s}
                                                     style={{
                                                         fontSize: 10,
                                                         padding: "2px 8px",
-                                                        borderRadius: 6,
-                                                        border: "1px solid #e5e7eb",
-                                                        color: "#9ca3af",
-                                                        background: "rgba(255,255,255,0.7)",
+                                                        borderRadius: 999,
+                                                        background: "rgba(0,0,0,0.03)",
+                                                        color: "#6b7280",
                                                     }}
                                                 >
-                                                    {skill}
+                                                    {s}
                                                 </span>
                                             ))}
                                             {project.skills.length > 3 && (
-                                                <span
-                                                    style={{
-                                                        fontSize: 10,
-                                                        padding: "2px 8px",
-                                                        borderRadius: 6,
-                                                        border: "1px solid #e5e7eb",
-                                                        color: "#c4b5fd",
-                                                        background: "rgba(255,255,255,0.7)",
-                                                    }}
-                                                >
+                                                <span style={{ fontSize: 10, padding: "2px 8px", color: "#9ca3af" }}>
                                                     +{project.skills.length - 3}
                                                 </span>
                                             )}
                                         </div>
-                                        <p style={{ marginTop: 10, fontSize: 11, color: "#9ca3af" }}>
-                                            {project.organization}
-                                        </p>
+                                        <p style={{ fontSize: 11, color: "#9ca3af" }}>{project.organization}</p>
                                     </a>
                                 </FadeIn>
                             );
@@ -522,98 +490,70 @@ export default function Home() {
 
                 {/* Currently Building */}
                 <section>
-                    <FadeIn delay={0.05}>
-                        <div style={{ marginBottom: 20 }}>
-                            <p
-                                style={{
-                                    fontSize: 10,
-                                    textTransform: "uppercase",
-                                    letterSpacing: "0.08em",
-                                    color: "#9ca3af",
-                                    marginBottom: 4,
-                                }}
-                            >
-                                What I am Working On
-                            </p>
-                            <h2
-                                style={{
-                                    fontSize: 17,
-                                    fontWeight: 600,
-                                    color: "#1e1b4b",
-                                    margin: 0,
-                                    letterSpacing: "-0.02em",
-                                }}
-                            >
-                                Currently Building
-                            </h2>
-                        </div>
+                    <FadeIn delay={0.1}>
+                        <p
+                            style={{
+                                fontSize: 10,
+                                textTransform: "uppercase",
+                                letterSpacing: "0.08em",
+                                color: "#9ca3af",
+                                marginBottom: 4,
+                            }}
+                        >
+                            What I am Working On
+                        </p>
+                        <h2
+                            style={{
+                                fontSize: 17,
+                                fontWeight: 600,
+                                color: "#1e1b4b",
+                                margin: "0 0 20px",
+                                letterSpacing: "-0.02em",
+                            }}
+                        >
+                            Currently Building
+                        </h2>
                     </FadeIn>
                     <div
-                        style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: 14 }}
+                        style={{
+                            display: "grid",
+                            gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit,minmax(240px,1fr))",
+                            gap: 16,
+                        }}
                     >
                         {currentlyBuilding.map((item, i) => {
                             const s = statusStyle[item.status];
                             return (
-                                <FadeIn key={item.title} delay={0.1 + i * 0.07}>
-                                    <div
-                                        style={{
-                                            ...glass,
-                                            borderRadius: 20,
-                                            padding: 20,
-                                            transition: "all 0.25s cubic-bezier(0.34,1.56,0.64,1)",
-                                        }}
-                                        onMouseEnter={e => {
-                                            const el = e.currentTarget as HTMLElement;
-                                            el.style.transform = "translateY(-3px)";
-                                            el.style.boxShadow =
-                                                "0 10px 32px rgba(99,102,241,0.12), 0 1px 0 rgba(255,255,255,0.9) inset";
-                                        }}
-                                        onMouseLeave={e => {
-                                            const el = e.currentTarget as HTMLElement;
-                                            el.style.transform = "none";
-                                            el.style.boxShadow =
-                                                "0 4px 24px rgba(99,102,241,0.08), 0 1px 0 rgba(255,255,255,0.9) inset";
-                                        }}
-                                    >
+                                <FadeIn key={item.title} delay={0.15 + i * 0.05}>
+                                    <div style={{ ...glass, borderRadius: 20, padding: "1.25rem" }}>
                                         <div
                                             style={{
                                                 display: "flex",
                                                 justifyContent: "space-between",
                                                 alignItems: "flex-start",
-                                                marginBottom: 10,
+                                                marginBottom: 8,
                                             }}
                                         >
-                                            <p
-                                                style={{
-                                                    fontSize: 14,
-                                                    fontWeight: 600,
-                                                    color: "#1e1b4b",
-                                                    margin: 0,
-                                                    flex: 1,
-                                                    paddingRight: 10,
-                                                    letterSpacing: "-0.01em",
-                                                }}
-                                            >
+                                            <p style={{ fontSize: 14, fontWeight: 600, color: "#1e1b4b", margin: 0 }}>
                                                 {item.title}
                                             </p>
                                             <span
                                                 style={{
-                                                    fontSize: 10,
-                                                    padding: "3px 9px",
+                                                    fontSize: 9,
+                                                    fontWeight: 600,
+                                                    padding: "2px 8px",
                                                     borderRadius: 999,
-                                                    border: `1px solid ${s.border}`,
                                                     background: s.bg,
                                                     color: s.color,
-                                                    fontWeight: 500,
+                                                    border: `1px solid ${s.border}`,
                                                     whiteSpace: "nowrap",
+                                                    marginLeft: 8,
                                                 }}
                                             >
                                                 {item.status}
                                             </span>
                                         </div>
-                                        <p style={{ fontSize: 12, color: "#6b7280", lineHeight: 1.6, margin: 0 }}>
-                                            {item.desc}
-                                        </p>
+                                        <p style={{ fontSize: 12.5, color: "#6b7280", lineHeight: 1.6 }}>{item.desc}</p>
                                     </div>
                                 </FadeIn>
                             );
@@ -621,13 +561,6 @@ export default function Home() {
                     </div>
                 </section>
             </main>
-
-            <style>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.5; }
-        }
-      `}</style>
         </div>
     );
 }
