@@ -1,4 +1,10 @@
-export type ProjectDomain = "computer-vision" | "data-analytics" | "data-science";
+export type ProjectDomain = "computer-vision" | "data-analytics" | "data-science" | "ai-product";
+
+export interface ProjectFeature {
+    name: string;
+    status: string;
+    description: string;
+}
 
 export interface Project {
     slug: string;
@@ -10,7 +16,11 @@ export interface Project {
     summary: string;
     description: string;
     skills: string[];
-    github_url: string;
+    github_url?: string | null;
+    live_url?: string | null;
+    achievement?: string | null;
+    role_detail?: string | null;
+    features?: ProjectFeature[];
     featured: boolean;
     hero_image?: string | null;
     architecture_diagram?: string | null;

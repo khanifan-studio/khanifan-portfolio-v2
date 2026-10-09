@@ -1,7 +1,7 @@
 "use client";
 import Navbar from "@/components/layout/Navbar";
 import FadeIn from "@/components/ui/FadeIn";
-import { currentlyBuilding, featuredProjects, skillGrowthData } from "@/data";
+import { currentlyBuilding, featuredProjects, projects, skillGrowthData } from "@/data";
 import {
     CategoryScale,
     Chart,
@@ -29,6 +29,7 @@ const domainColor: Record<string, { bg: string; color: string; border: string }>
     "computer-vision": { bg: "rgba(99,102,241,0.1)", color: "#4f46e5", border: "rgba(99,102,241,0.2)" },
     "data-analytics": { bg: "rgba(139,92,246,0.1)", color: "#7c3aed", border: "rgba(139,92,246,0.2)" },
     "data-science": { bg: "rgba(59,130,246,0.1)", color: "#2563eb", border: "rgba(59,130,246,0.2)" },
+    "ai-product": { bg: "rgba(13,148,136,0.1)", color: "#0f766e", border: "rgba(13,148,136,0.22)" },
 };
 
 const statusStyle: Record<string, { color: string; bg: string; border: string }> = {
@@ -104,6 +105,12 @@ export default function Home() {
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
+
+    const stats = [
+        { value: String(projects.length), label: "Projects" },
+        { value: String(new Set(projects.map(p => p.domain)).size), label: "Domains" },
+        { value: "AI/DS", label: "Focus" },
+    ];
 
     return (
         <div style={{ position: "relative", minHeight: "100vh" }}>
@@ -259,11 +266,7 @@ export default function Home() {
                                         width: isMobile ? "100%" : undefined,
                                     }}
                                 >
-                                    {[
-                                        { value: "5", label: "Projects" },
-                                        { value: "3", label: "Domains" },
-                                        { value: "AI/DS", label: "Focus" },
-                                    ].map(stat => (
+                                    {stats.map(stat => (
                                         <div
                                             key={stat.label}
                                             style={{
@@ -402,7 +405,7 @@ export default function Home() {
                     <div
                         style={{
                             display: "grid",
-                            gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit,minmax(260px,1fr))",
+                            gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit,minmax(240px,1fr))",
                             gap: 16,
                         }}
                     >
@@ -421,23 +424,48 @@ export default function Home() {
                                             height: "100%",
                                         }}
                                     >
-                                        <span
+                                        <div
                                             style={{
-                                                display: "inline-block",
-                                                fontSize: 10,
-                                                fontWeight: 600,
-                                                padding: "3px 10px",
-                                                borderRadius: 999,
-                                                background: c.bg,
-                                                color: c.color,
-                                                border: `1px solid ${c.border}`,
+                                                display: "flex",
+                                                justifyContent: "space-between",
+                                                alignItems: "flex-start",
+                                                gap: 8,
                                                 marginBottom: 10,
-                                                textTransform: "uppercase",
-                                                letterSpacing: "0.04em",
                                             }}
                                         >
-                                            {project.domain.replace(/-/g, " ")}
-                                        </span>
+                                            <span
+                                                style={{
+                                                    display: "inline-block",
+                                                    fontSize: 10,
+                                                    fontWeight: 600,
+                                                    padding: "3px 10px",
+                                                    borderRadius: 999,
+                                                    background: c.bg,
+                                                    color: c.color,
+                                                    border: `1px solid ${c.border}`,
+                                                    textTransform: "uppercase",
+                                                    letterSpacing: "0.04em",
+                                                }}
+                                            >
+                                                {project.domain.replace(/-/g, " ")}
+                                            </span>
+                                            {project.achievement && (
+                                                <span
+                                                    style={{
+                                                        fontSize: 9,
+                                                        fontWeight: 600,
+                                                        padding: "3px 8px",
+                                                        borderRadius: 999,
+                                                        border: "1px solid rgba(217,119,6,0.25)",
+                                                        color: "#b45309",
+                                                        background: "rgba(251,191,36,0.14)",
+                                                        whiteSpace: "nowrap",
+                                                    }}
+                                                >
+                                                    {project.achievement.split(",")[0]}
+                                                </span>
+                                            )}
+                                        </div>
                                         <p
                                             style={{
                                                 fontSize: 15,

@@ -2,6 +2,51 @@ import { Certification, Project, SkillGroup } from "@/types";
 
 export const projects: Project[] = [
     {
+        slug: "kulink",
+        title: "Kulink",
+        role: "Chief Technology Officer (CTO)",
+        organization: "Kulink",
+        period: "2026 – Present",
+        domain: "ai-product",
+        summary:
+            "AI-powered project oversight platform for small-to-medium Indonesian contractors, turning everyday site photos into verified progress records. Top 10 finalist at UD Impact 2026.",
+        description:
+            "Kulink gives contractors, developers, and their stakeholders a single, verified record of what is happening on every site, captured automatically from the field and structured without manual entry. Photographs are already the de facto record of progress on almost every Indonesian construction site, so Kulink is built around the field photo as its primary input: the AI is the workflow, not an add-on.\n\nThe platform targets a recurring problem in the industry: scattered documentation, manual reporting, and limited project visibility that lead to delayed decisions. Spreadsheets and messaging apps were never designed to connect documentation, reporting, and monitoring, while enterprise construction platforms are priced and scoped for far larger portfolios. Kulink is scoped and priced for small-to-medium contractors, from a single site today to a multi-project portfolio as the business grows.\n\nThe platform is currently in development: the workforce management module is live in prototype, while the three AI engines are being built.",
+        role_detail:
+            "As CTO, I am responsible for the technical direction of Kulink: shaping the product architecture and leading the development of its AI features (progress tracking, documentation, and daily reporting) alongside the workforce management module. Kulink was selected as a Top 10 finalist at UD Impact 2026.",
+        features: [
+            {
+                name: "AI Progress Tracking",
+                status: "In development",
+                description:
+                    "Assesses structural, finishing, and MEP progress directly from field photography, replacing manual percentage entry with a verified, photo-backed record.",
+            },
+            {
+                name: "AI Documentation",
+                status: "In development",
+                description:
+                    "Indexes every photograph and field record automatically by level, trade, and date, forming an audit-ready archive rather than a personal photo library.",
+            },
+            {
+                name: "AI Daily Reporting",
+                status: "In development",
+                description:
+                    "Compiles field activity into a structured daily report without manual input, so the office gets an accurate account of site conditions without chasing updates.",
+            },
+            {
+                name: "Workforce Management",
+                status: "Live in prototype",
+                description:
+                    "Attendance, task assignment, and productivity for every crew member, consolidated into a single view for both site and head-office management.",
+            },
+        ],
+        achievement: "Top 10 Finalist, UD Impact 2026",
+        skills: ["Computer Vision", "AI Engineering", "Product Development", "Technical Leadership"],
+        live_url: "https://kulink-app.vercel.app/",
+        github_url: null,
+        featured: true,
+    },
+    {
         slug: "smart-traffic-management-system",
         title: "Traffic Trend Analysis in Tourist Areas",
         role: "AI Engineer (Computer Vision)",
