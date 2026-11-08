@@ -37,6 +37,22 @@ export interface Certification {
     image?: string | null;
 }
 
+export interface ExperienceGroup {
+    category: string;
+    points: string[];
+}
+
+export interface WorkExperience {
+    slug: string;
+    role: string;
+    company: string;
+    period: string;
+    location?: string;
+    summary: string;
+    groups: ExperienceGroup[];
+    skills: string[];
+}
+
 export interface Skill {
     name: string;
     level: "Comfortable with" | "Working knowledge" | "Learning";

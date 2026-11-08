@@ -1,4 +1,4 @@
-import { Certification, Project, SkillGroup } from "@/types";
+import { Certification, Project, SkillGroup, WorkExperience } from "@/types";
 
 export const projects: Project[] = [
     {
@@ -277,6 +277,227 @@ export const certifications: Certification[] = [
         credential_url: "https://www.dicoding.com/certificates/KEXLYQ790ZG2",
         description: "Foundations of data science: analysis cycle, tools, and ML basics.",
         image: "/images/certifications/15.jpg",
+    },
+];
+
+export const workExperiences: WorkExperience[] = [
+    {
+        slug: "kulink",
+        role: "Chief Technology Officer (CTO)",
+        company: "CV. KULINKINDONESIA",
+        period: "September 2026 – Present",
+        location: "Indonesia · Hybrid",
+        summary: "Chief Technology Officer of KULINK, Top 10 Finalist at UD Impact 2026.",
+        groups: [
+            {
+                category: "Key Contributions",
+                points: [
+                    "Led early-stage technical exploration for the product.",
+                    "Contributed to a web-based product prototype.",
+                    "Evaluated potential AI use cases for the product.",
+                ],
+            },
+        ],
+        skills: ["Technical Leadership", "Product Development", "AI Use Case Evaluation"],
+    },
+    {
+        slug: "zettapola",
+        role: "Lead Full-Stack & AI Developer (Project-Based)",
+        company: "ZettaPola",
+        period: "July 2026 – Present",
+        summary:
+            "Designed, built, and operate ZettaPola, a curation platform and automation service for prompt engineering and modern web infrastructure, built to make digital marketing of local MSME products more efficient and to manage affiliate content.",
+        groups: [
+            {
+                category: "Backend & AI Systems",
+                points: [
+                    "Designed structured prompt engineering workflows for generative AI to produce accurate marketing visuals of products, without visual exaggeration.",
+                    "Integrated a Python and PostgreSQL based system architecture for data processing and automated content management.",
+                ],
+            },
+            {
+                category: "Frontend & Modern UX",
+                points: [
+                    "Built a responsive, well-structured web interface with TypeScript, React, Next.js, and Supabase, including Role-Based Access Control (RBAC).",
+                    "Optimized state management in custom form components using window event listeners (pagehide and visibilitychange) to keep local storage in sync and prevent data loss when users switch browser tabs.",
+                ],
+            },
+            {
+                category: "Operations & Infrastructure",
+                points: [
+                    "Set ongoing content curation targets and manage platform operations, including registering the .my.id domain and integrating an official email service at zettapola@gmail.com.",
+                    "Manage the source code with Git and GitHub, applying privacy and security policies before deployment to production.",
+                ],
+            },
+        ],
+        skills: [
+            "Prompt Engineering",
+            "Python",
+            "PostgreSQL",
+            "TypeScript",
+            "React",
+            "Next.js",
+            "Supabase",
+            "RBAC",
+            "Git & GitHub",
+        ],
+    },
+    {
+        slug: "kupu-id",
+        role: "Data Annotator (Contract)",
+        company: "KUPU ID",
+        period: "October 2026 – November 2026",
+        location: "Jakarta Raya, Indonesia · On Site",
+        summary: "Annotated traffic lights in road video keyframes with bounding boxes and context labels.",
+        groups: [
+            {
+                category: "Traffic Light Annotation",
+                points: [
+                    "Annotated traffic lights with bounding boxes on video keyframes, with 9 to 13 keyframes per video.",
+                    "Labeled the direction of each traffic light and whether it affects the ego vehicle, the vehicle recording the road.",
+                ],
+            },
+            {
+                category: "Ego Context Labeling",
+                points: [
+                    "For traffic lights that affect the ego vehicle, annotated the directions the ego vehicle is allowed to take, such as right, left, straight, and U-turn.",
+                    "Marked whether the ego vehicle was inside an intersection, such as at a junction or in a roundabout.",
+                ],
+            },
+            {
+                category: "Reporting",
+                points: [
+                    "Reported work using the spreadsheet provided for the project.",
+                ],
+            },
+        ],
+        skills: [
+            "Data Annotation",
+            "Bounding Box Annotation",
+            "Traffic Light Labeling",
+            "Spreadsheet Reporting",
+        ],
+    },
+    {
+        slug: "jatiwangi-motor",
+        role: "IT Team Intern",
+        company: "Jatiwangi Motor",
+        period: "January 2026 – April 2026",
+        location: "Cikarang Barat, Jawa Barat, Indonesia · On Site",
+        summary:
+            "Built an internal web application to replace manual purchase and sales records, covering purchasing, inventory, finance, point of sale, and master data.",
+        groups: [
+            {
+                category: "System Development",
+                points: [
+                    "Replaced manual recording of purchases and sales with an internal web application covering purchasing, inventory, finance, point of sale, and master data.",
+                    "Built the application with Python, Django, and React, working alongside one other intern.",
+                ],
+            },
+            {
+                category: "Infrastructure",
+                points: [
+                    "Deployed the application with Docker on a local computer connected to a single Wi-Fi network, so any device on the same network can access it through the host's IP address.",
+                ],
+            },
+            {
+                category: "Access Control & Audit",
+                points: [
+                    "Implemented Role-Based Access Control: superadmins have full CRUD access, while admins have create, read, and update access only.",
+                    "Added a dedicated page for system logs to support auditing.",
+                ],
+            },
+            {
+                category: "Inventory Insights & Testing",
+                points: [
+                    "Connected the point of sale to inventory so users can see which products need restocking and which have the highest demand in a selected period.",
+                    "Tested the system with the people who handled these processes before: the owner and technicians (2 to 4 people).",
+                ],
+            },
+        ],
+        skills: [
+            "Python",
+            "Django",
+            "React",
+            "Docker",
+            "RBAC",
+            "Audit Logging",
+            "Inventory Management",
+        ],
+    },
+    {
+        slug: "salam-pacific",
+        role: "Artificial Intelligence Intern",
+        company: "PT Salam Pacific Indonesia Lines",
+        period: "September 2025 – December 2025",
+        location: "Jakarta Utara, Jakarta Raya, Indonesia · On Site",
+        summary:
+            "Worked on two data projects during an on-site internship: a disease monitoring system and the preparation of ship operation data for analysis.",
+        groups: [
+            {
+                category: "Data & Monitoring Systems",
+                points: [
+                    "Built a disease monitoring system to track regions with a high frequency of disease cases.",
+                    "Ran exploratory data analysis (EDA) that showed most of the identified diseases were respiratory-related, then applied data mining to determine the contributing factors.",
+                    "Integrated the project API with external data sources for real-time updates, fetched every 15 minutes.",
+                ],
+            },
+            {
+                category: "Data Preparation",
+                points: [
+                    "Transformed raw ship operation Excel files with multi-row headers into clean, analysis-ready CSV datasets.",
+                    "Standardized column structures, cleaned categorical fields, and resolved inconsistent date formats.",
+                ],
+            },
+        ],
+        skills: [
+            "Python",
+            "Pandas",
+            "EDA",
+            "Data Mining",
+            "API Integration",
+            "ETL",
+            "Data Cleaning",
+            "PostgreSQL",
+        ],
+    },
+    {
+        slug: "san-kopi",
+        role: "Content Creator",
+        company: "San Kopi",
+        period: "April 2023 – September 2023",
+        location: "Takengon, Indonesia · On Site",
+        summary:
+            "Handled video editing and live-stream sales for San Kopi, a coffee business in Takengon, and supported the team as a barista at wedding events.",
+        groups: [
+            {
+                category: "Content Production",
+                points: [
+                    "Edited videos shot by other team members into short-form content using CapCut and other editing tools, published on TikTok and Shopee.",
+                ],
+            },
+            {
+                category: "Live Commerce",
+                points: [
+                    "Hosted live-stream sales on TikTok using a phone and tripod, with a laptop to monitor sales during the session and read questions from the live chat.",
+                    "Averaged around 2 kg of coffee sold per day across different variants.",
+                ],
+            },
+            {
+                category: "Event Support",
+                points: [
+                    "Assisted as a barista at several wedding events, serving at San Kopi's tenant.",
+                ],
+            },
+        ],
+        skills: [
+            "Video Editing",
+            "CapCut",
+            "TikTok Live Selling",
+            "Shopee",
+            "Sales Monitoring",
+            "Customer Interaction",
+        ],
     },
 ];
 
