@@ -1,4 +1,6 @@
 "use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const links = [
@@ -10,13 +12,12 @@ const links = [
 ];
 
 export default function Navbar() {
+    const pathname = usePathname();
     const [scrolled, setScrolled] = useState(false);
-    const [path, setPath] = useState("/");
     const [isMobile, setIsMobile] = useState(false);
     const [drawerOpen, setDrawerOpen] = useState(false);
 
     useEffect(() => {
-        setPath(window.location.pathname);
         const handleScroll = () => setScrolled(window.scrollY > 20);
         const handleResize = () => setIsMobile(window.innerWidth < 768);
         handleResize();
@@ -27,6 +28,9 @@ export default function Navbar() {
             window.removeEventListener("resize", handleResize);
         };
     }, []);
+
+    const isActive = (href: string) =>
+        pathname === href || (href !== "/" && pathname.startsWith(`${href}/`));
 
     useEffect(() => {
         document.body.style.overflow = drawerOpen ? "hidden" : "";
@@ -66,7 +70,7 @@ export default function Navbar() {
                             transition: "box-shadow 0.3s ease",
                         }}
                     >
-                        <a
+                        <Link
                             href="/"
                             style={{
                                 fontSize: 15,
@@ -77,27 +81,27 @@ export default function Navbar() {
                             }}
                         >
                             khanifan<span style={{ color: "#6366f1" }}>.</span>
-                        </a>
+                        </Link>
 
                         {!isMobile && (
                             <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
                                 {links.map(link => (
-                                    <a
+                                    <Link
                                         key={link.href}
                                         href={link.href}
                                         style={{
                                             fontSize: 13,
-                                            fontWeight: path === link.href ? 500 : 400,
-                                            color: path === link.href ? "#6366f1" : "#6b7280",
+                                            fontWeight: isActive(link.href) ? 500 : 400,
+                                            color: isActive(link.href) ? "#6366f1" : "#6b7280",
                                             textDecoration: "none",
                                             padding: "5px 12px",
                                             borderRadius: 8,
-                                            background: path === link.href ? "rgba(99,102,241,0.08)" : "transparent",
+                                            background: isActive(link.href) ? "rgba(99,102,241,0.08)" : "transparent",
                                             transition: "all 0.15s ease",
                                         }}
                                     >
                                         {link.label}
-                                    </a>
+                                    </Link>
                                 ))}
                             </div>
                         )}
@@ -222,22 +226,22 @@ export default function Navbar() {
 
                     <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                         {links.map(link => (
-                            <a
+                            <Link
                                 key={link.href}
                                 href={link.href}
                                 onClick={() => setDrawerOpen(false)}
                                 style={{
                                     fontSize: 15,
-                                    fontWeight: path === link.href ? 600 : 500,
-                                    color: path === link.href ? "#6366f1" : "#374151",
+                                    fontWeight: isActive(link.href) ? 600 : 500,
+                                    color: isActive(link.href) ? "#6366f1" : "#374151",
                                     textDecoration: "none",
                                     padding: "12px 14px",
                                     borderRadius: 10,
-                                    background: path === link.href ? "rgba(99,102,241,0.08)" : "transparent",
+                                    background: isActive(link.href) ? "rgba(99,102,241,0.08)" : "transparent",
                                 }}
                             >
                                 {link.label}
-                            </a>
+                            </Link>
                         ))}
                     </div>
 

@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
 import FadeIn from "@/components/ui/FadeIn";
 import { projects } from "@/data";
@@ -42,7 +43,7 @@ export default function ProjectDetail() {
                 }}
             >
                 <FadeIn delay={0}>
-                    <a
+                    <Link
                         href="/projects"
                         style={{
                             display: "inline-flex",
@@ -59,7 +60,7 @@ export default function ProjectDetail() {
                         onMouseLeave={e => ((e.currentTarget as HTMLElement).style.color = "#6b7280")}
                     >
                         ← Back to Projects
-                    </a>
+                    </Link>
                 </FadeIn>
 
                 <FadeIn delay={0.05}>

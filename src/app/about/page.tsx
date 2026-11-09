@@ -36,11 +36,11 @@ const timeline = [
         after: "Enrolling in Information Systems gave that interest a shape. I started learning how software and data actually work together: databases, basic programming, systems analysis. It didn't take long before I wanted to build things beyond what was being taught in class, so I started picking up side material on my own, mostly Python and the math behind machine learning, without really knowing yet where it would lead.",
     },
     {
-        year: "2024",
-        title: "Completed 15 certifications in AWS & Dicoding",
+        year: "2024 – 2025",
+        title: "Completed 15 certifications in Dicoding & AWS",
         image: "/images/journey/2024.png",
         before: "Coming out of the first year, I could follow along in class but hadn't built anything real on my own.",
-        after: "I spent the year deliberately building a foundation before jumping into real projects. On Dicoding, that meant working through Python fundamentals (OOP, unit testing, common libraries) and core SQL. On AWS, it meant going through the machine learning learning plan end to end: framing a problem, understanding the ML process, and getting hands-on with services like Redshift, Glue, Athena, EMR, and OpenSearch for handling data at scale. None of it was glamorous. It was closer to studying the plumbing before trying to build a house, but it meant that when real projects came, I wasn't learning the basics and the problem at the same time.",
+        after: "I spent 2024 to 2025 deliberately building a foundation before jumping into real projects. On Dicoding, that meant working through Python fundamentals (OOP, unit testing, common libraries) and core SQL. On AWS, it meant going through the machine learning learning plan end to end: framing a problem, understanding the ML process, and getting hands-on with services like Redshift, Glue, Athena, EMR, and OpenSearch for handling data at scale. None of it was glamorous. It was closer to studying the plumbing before trying to build a house, but it meant that when real projects came, I wasn't learning the basics and the problem at the same time.",
     },
     {
         year: "May 2025",
@@ -73,7 +73,7 @@ const timeline = [
         year: "Jan 2026",
         title: "Capstone with Dishub Central Aceh, computer vision",
         before: "Everything before this had been either academic or internal to one company. I hadn't worked directly with government stakeholders.",
-        after: "The capstone with the Department of Transportation of Central Aceh changed that. I led the development of a real-time traffic analysis prototype for the Takengon and Lake Laut Tawar tourist areas, implementing a YOLOv8 object detection model integrated into an OpenCV video pipeline for vehicle counting and traffic density estimation. The output fed into PostgreSQL-backed dashboards that were actually used in policy discussions about traffic management in those areas, not just presented once and shelved. It was the first project where the audience wasn't a professor or a manager, but people making decisions that affect a whole region.",
+        after: "The capstone with the Department of Transportation of Central Aceh changed that. I led the development of a real-time traffic analysis prototype for the Takengon and Lake Laut Tawar tourist areas, implementing a YOLOv8 object detection model integrated into an OpenCV video pipeline for vehicle counting and traffic density estimation. The output fed into PostgreSQL-backed dashboards built to support traffic management decisions in those areas, and I handed the prototype over to the department. It was the first project where the audience wasn't a professor or a manager, but people making decisions that affect a whole region.",
     },
     {
         year: "2026",
@@ -323,6 +323,7 @@ function TimelineItem({ item, index, onClick }: { item: (typeof timeline)[0]; in
 
 export default function AboutPage() {
     const [selected, setSelected] = useState<(typeof timeline)[0] | null>(null);
+    const usedSkillLevels = new Set<string>(skillGroups.flatMap(group => group.skills.map(skill => skill.level)));
     return (
         <div style={{ position: "relative", minHeight: "100vh" }}>
             <Navbar />
@@ -401,8 +402,8 @@ export default function AboutPage() {
                             <p style={{ margin: "0 0 12px" }}>
                                 What matters most to me is whether something actually holds up in the hands of real
                                 users, not just in a notebook or a demo. That principle has guided most of my work so
-                                far, including a computer vision pipeline I built that&apos;s currently in use by a
-                                local government transportation office.
+                                far, including a computer vision traffic analysis prototype I built and handed over to
+                                the Department of Transportation of Central Aceh.
                             </p>
                             <p style={{ margin: 0 }}>
                                 I&apos;m still early in this field, and I&apos;d rather build that experience openly
@@ -435,20 +436,22 @@ export default function AboutPage() {
                                 color: "#9ca3af",
                             }}
                         >
-                            {Object.entries(levelStyle).map(([label, s]) => (
-                                <div key={label} style={{ display: "flex", alignItems: "center", gap: 5 }}>
-                                    <span
-                                        style={{
-                                            width: 6,
-                                            height: 6,
-                                            borderRadius: "50%",
-                                            background: s.dot,
-                                            flexShrink: 0,
-                                        }}
-                                    />
-                                    {label}
-                                </div>
-                            ))}
+                            {Object.entries(levelStyle)
+                                .filter(([label]) => usedSkillLevels.has(label))
+                                .map(([label, s]) => (
+                                    <div key={label} style={{ display: "flex", alignItems: "center", gap: 5 }}>
+                                        <span
+                                            style={{
+                                                width: 6,
+                                                height: 6,
+                                                borderRadius: "50%",
+                                                background: s.dot,
+                                                flexShrink: 0,
+                                            }}
+                                        />
+                                        {label}
+                                    </div>
+                                ))}
                         </div>
                         <div
                             style={{

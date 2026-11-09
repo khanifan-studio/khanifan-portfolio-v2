@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
 import FadeIn from "@/components/ui/FadeIn";
 import { projects } from "@/data";
@@ -104,7 +105,7 @@ export default function ProjectsPage() {
                             domainAccent[project.domain as keyof typeof domainAccent] ?? domainAccent["data-science"];
                         return (
                             <FadeIn key={project.slug} delay={0.05 + i * 0.05}>
-                                <a
+                                <Link
                                     href={`/projects/${project.slug}`}
                                     style={{
                                         ...glass,
@@ -246,7 +247,7 @@ export default function ProjectsPage() {
                                         </p>
                                         <p style={{ fontSize: 11, color: "#c4b5fd", margin: 0 }}>{project.period}</p>
                                     </div>
-                                </a>
+                                </Link>
                             </FadeIn>
                         );
                     })}

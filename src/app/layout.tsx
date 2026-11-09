@@ -1,9 +1,25 @@
 import type { Metadata } from "next";
+import { siteName, siteUrl } from "@/lib/site";
+import TawkWidget from "@/components/layout/TawkWidget";
 import "./globals.css";
 
 export const metadata: Metadata = {
-    title: "Khanifan's Portfolio",
+    metadataBase: new URL(siteUrl),
+    title: { default: "Khanifan's Portfolio", template: "%s | Khanifan" },
     description: "AI Engineering, Machine Learning, and Computer Vision portfolio of Khanifan.",
+    openGraph: {
+        type: "website",
+        url: siteUrl,
+        siteName,
+        title: "Khanifan's Portfolio",
+        description: "AI Engineering, Machine Learning, and Computer Vision portfolio of Khanifan.",
+        locale: "en_US",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Khanifan's Portfolio",
+        description: "AI Engineering, Machine Learning, and Computer Vision portfolio of Khanifan.",
+    },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -121,22 +137,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <rect width="100%" height="100%" fill="url(#nodes)" />
                 </svg>
 
-                {/* Tawk.to chat widget */}
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `
-          var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-          (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/YOUR_TAWK_ID/default';
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-          })();
-        `,
-                    }}
-                />
+                <TawkWidget />
 
                 {children}
             </body>

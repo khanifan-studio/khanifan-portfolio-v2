@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
 import FadeIn from "@/components/ui/FadeIn";
 import { currentlyBuilding, featuredProjects, projects, skillGrowthData } from "@/data";
@@ -394,12 +395,12 @@ export default function Home() {
                                     Featured Projects
                                 </h2>
                             </div>
-                            <a
+                            <Link
                                 href="/projects"
                                 style={{ fontSize: 12, color: "#6366f1", textDecoration: "none", fontWeight: 500 }}
                             >
                                 View all →
-                            </a>
+                            </Link>
                         </div>
                     </FadeIn>
                     <div
@@ -413,7 +414,7 @@ export default function Home() {
                             const c = domainColor[project.domain] ?? domainColor["data-science"];
                             return (
                                 <FadeIn key={project.slug} delay={0.2 + i * 0.05}>
-                                    <a
+                                    <Link
                                         href={`/projects/${project.slug}`}
                                         style={{
                                             ...glass,
@@ -509,7 +510,7 @@ export default function Home() {
                                             )}
                                         </div>
                                         <p style={{ fontSize: 11, color: "#9ca3af" }}>{project.organization}</p>
-                                    </a>
+                                    </Link>
                                 </FadeIn>
                             );
                         })}

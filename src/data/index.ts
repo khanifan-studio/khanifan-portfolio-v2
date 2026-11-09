@@ -55,7 +55,7 @@ export const projects: Project[] = [
         domain: "computer-vision",
         summary: "Real-time vehicle counting and density estimation for tourist-area traffic management using YOLOv8.",
         description:
-            "Capstone project with the Department of Transportation (Dishub) of Central Aceh to build an intelligent traffic analysis prototype for the Takengon and Lake Laut Tawar areas. Implemented YOLOv8 object detection integrated into an OpenCV video pipeline for real-time vehicle counting and density estimation, plus PostgreSQL-backed analytics dashboards used for evidence-based policy-making.",
+            "Capstone project with the Department of Transportation (Dishub) of Central Aceh to build an intelligent traffic analysis prototype for the Takengon and Lake Laut Tawar areas. Implemented YOLOv8 object detection integrated into an OpenCV video pipeline for real-time vehicle counting and density estimation, plus PostgreSQL-backed analytics dashboards built to support evidence-based policy-making. The prototype was handed over to Dishub Central Aceh.",
         skills: ["YOLOv8", "OpenCV", "Computer Vision", "PostgreSQL", "Machine Learning"],
         github_url: "https://github.com/Meozee/smart-traffic-management-system-01",
         featured: true,
@@ -119,6 +119,31 @@ export const projects: Project[] = [
     },
 ];
 
+const skillGrowthOrder = [
+    { slug: "student-performance-classification", label: "Student Perf.\n(May '25)" },
+    { slug: "marketing-dashboard-funnel-prediction", label: "Marketing\n(Jun '25)" },
+    { slug: "early-warning-medical-project", label: "Early Warning\n(Sep '25)" },
+    { slug: "ship-operation-systems", label: "Ship Ops\n(Oct '25)" },
+    { slug: "smart-traffic-management-system", label: "Smart Traffic\n(Jan '26)" },
+];
+
+export const skillGrowthData: { labels: string[]; data: number[] } = (() => {
+    const uniqueSkills = new Set<string>();
+    const data = skillGrowthOrder.map(({ slug }) => {
+        const project = projects.find(project => project.slug === slug);
+        if (!project) {
+            throw new Error(`Skill growth project not found: ${slug}`);
+        }
+        project.skills.forEach(skill => uniqueSkills.add(skill));
+        return uniqueSkills.size;
+    });
+
+    return {
+        labels: skillGrowthOrder.map(({ label }) => label),
+        data,
+    };
+})();
+
 export const featuredProjects = projects.filter(p => p.featured);
 
 export const skillGroups: SkillGroup[] = [
@@ -149,7 +174,11 @@ export const skillGroups: SkillGroup[] = [
             { name: "REST API", level: "Comfortable with" },
             { name: "Docker", level: "Comfortable with" },
             { name: "ETL", level: "Working knowledge" },
-            { name: "Next.js", level: "Learning" },
+            { name: "Next.js", level: "Working knowledge" },
+            { name: "React", level: "Working knowledge" },
+            { name: "TypeScript", level: "Working knowledge" },
+            { name: "Supabase", level: "Working knowledge" },
+            { name: "Git & GitHub", level: "Comfortable with" },
         ],
     },
 ];
@@ -293,8 +322,9 @@ export const workExperiences: WorkExperience[] = [
                 category: "Key Contributions",
                 points: [
                     "Led early-stage technical exploration for the product.",
-                    "Contributed to a web-based product prototype.",
                     "Evaluated potential AI use cases for the product.",
+                    "Led development of the AI features: progress tracking, documentation, and daily reporting. These are in development.",
+                    "Contributed to a web-based product prototype. The workforce management module is live in prototype.",
                 ],
             },
         ],
@@ -500,17 +530,6 @@ export const workExperiences: WorkExperience[] = [
         ],
     },
 ];
-
-export const skillGrowthData = {
-    labels: [
-        "Student Perf.\n(May '25)",
-        "Marketing\n(Jun '25)",
-        "Early Warning\n(Sep '25)",
-        "Ship Ops\n(Oct '25)",
-        "Smart Traffic\n(Jan '26)",
-    ],
-    data: [5, 9, 13, 16, 21],
-};
 
 export const currentlyBuilding = [
     {
